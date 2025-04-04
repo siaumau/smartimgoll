@@ -11,135 +11,108 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1 id="app-title">圖片文字移除工具</h1>
-            <div class="language-selector">
-                <button id="settings-btn" aria-label="設置">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
+        <header>
+            <h1>圖片文字移除工具</h1>
+        </header>
 
         <div class="toolbar">
+            <!-- 檔案操作 -->
             <div class="tool-group">
-                <div class="tool-title">檔案操作</div>
-                <button id="upload-btn" class="primary tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <button id="upload-btn" class="tooltip">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="17 8 12 3 7 8"></polyline>
                         <line x1="12" y1="3" x2="12" y2="15"></line>
                     </svg>
-                    上傳圖片
-                    <span class="tooltiptext">選擇要處理的圖片</span>
+                    <span class="tooltiptext" id="upload-tooltip">上傳圖片</span>
                 </button>
-                <input type="file" id="file-input" accept="image/*">
-            </div>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
 
-            <div class="tool-group">
-                <div class="tool-title">選擇工具</div>
-                <button id="rectangle-btn" class="tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    </svg>
-                    矩形選擇
-                    <span class="tooltiptext">框選要移除的區域</span>
-                </button>
-                <button id="magic-wand-btn" class="tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 2L14 6L18 6L15 9L16 13L12 11L8 13L9 9L6 6L10 6L12 2Z"></path>
-                    </svg>
-                    智慧選擇
-                    <span class="tooltiptext">智慧選取相似顏色區域</span>
-                </button>
-            </div>
-
-            <div class="tool-group">
-                <div class="tool-title">編輯操作</div>
-                <button id="remove-btn" class="success tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
-                        <line x1="18" y1="9" x2="12" y2="15"></line>
-                        <line x1="12" y1="9" x2="18" y2="15"></line>
-                    </svg>
-                    清除選擇
-                    <span class="tooltiptext">移除選取的區域</span>
-                </button>
-                <button id="undo-btn" class="tooltip">
-                <button id="lasso-btn" class="tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 22a5 5 0 0 1-2-4"></path>
-                        <path d="M3.3 14A6.8 6.8 0 0 1 2 10c0-4.4 4.5-8 10-8s10 3.6 10 8-4.5 8-10 8a12 12 0 0 1-5-1"></path>
-                        <path d="M5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
-                    </svg>
-                    <span id="lasso-btn-text">套索工具</span>
-                    <span class="tooltiptext" id="lasso-tooltip">自由繪製不規則選區</span>
-                </button>
-                <button id="color-picker-btn" class="tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"></path>
-                    </svg>
-                    <span id="color-picker-btn-text">拾色器</span>
-                    <span class="tooltiptext" id="color-picker-tooltip">點選並移除特定顏色</span>
-                </button>
-            </div>
-
-            <div class="tool-group">
-                <div class="tool-title" id="edit-tools-title">編輯操作</div>
-                <button id="erase-btn" class="success tooltip" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 20H7L3 16V4h17v16z"></path>
-                        <path d="M20 8H8"></path>
-                    </svg>
-                    <span id="erase-btn-text">清除選區</span>
-                    <span class="tooltiptext" id="erase-tooltip">移除選中區域的內容</span>
-                </button>
-                <button id="undo-btn" class="tooltip" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 14L4 9l5-5"></path>
-                        <path d="M4 9h16a4 4 0 0 1 0 8h-5"></path>
-                    </svg>
-                    <span id="undo-btn-text">撤銷操作</span>
-                    <span class="tooltiptext" id="undo-tooltip">返回上一步操作</span>
-                </button>
-
-                <!-- 填充颜色设置 -->
-                <div class="color-input-group">
-                    <label for="fill-color" id="fill-color-label">填充顏色:</label>
-                    <input type="color" id="fill-color" value="#00000000">
-                    <div class="color-preview" id="fill-color-preview"></div>
-                    <button id="transparent-btn" class="tooltip">
-                        <span id="transparent-btn-text">透明</span>
-                        <span class="tooltiptext" id="transparent-tooltip">使用透明填充</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="tool-group">
-                <div class="tool-title" id="output-tools-title">輸出選項</div>
-                <button id="reset-btn" class="tooltip" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                        <path d="M3 3v5h5"></path>
-                    </svg>
-                    <span id="reset-btn-text">恢復原圖</span>
-                    <span class="tooltiptext" id="reset-tooltip">恢復到原始圖片</span>
-                </button>
-                <button id="download-btn" class="primary tooltip" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <button id="download-btn" class="tooltip" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    <span id="download-btn-text">下載圖片</span>
-                    <span class="tooltiptext" id="download-tooltip">保存處理後的圖片</span>
+                    <span class="tooltiptext" id="download-tooltip">下載圖片</span>
                 </button>
             </div>
 
+            <!-- 選擇工具 -->
             <div class="tool-group">
-                <div class="tool-title">背景預覽</div>
+                <button id="rectangle-btn" class="tooltip">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    </svg>
+                    <span class="tooltiptext" id="rectangle-tooltip">矩形選擇</span>
+                </button>
+
+                <button id="lasso-btn" class="tooltip">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 22a5 5 0 0 1-2-4"></path>
+                        <path d="M3.3 14A6.8 6.8 0 0 1 2 10c0-4.4 4.5-8 10-8s10 3.6 10 8-4.5 8-10 8"></path>
+                        <path d="M5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                    </svg>
+                    <span class="tooltiptext" id="lasso-tooltip">套索選擇</span>
+                </button>
+
+                <button id="color-picker-btn" class="tooltip">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l10 10-10 10-10-10z"></path>
+                        <circle cx="12" cy="12" r="1"></circle>
+                    </svg>
+                    <span class="tooltiptext" id="color-picker-tooltip">拾色器</span>
+                </button>
+
+                <div id="tolerance-container" style="display: none;">
+                    <label for="tolerance-slider" id="tolerance-label">容差：</label>
+                    <input type="range" id="tolerance-slider" min="0" max="100" value="30">
+                    <span id="tolerance-value">30</span>
+                </div>
+            </div>
+
+            <!-- 編輯操作 -->
+            <div class="tool-group">
+                <button id="erase-btn" class="tooltip" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 20H4"></path>
+                        <path d="M4 4l16 16"></path>
+                    </svg>
+                    <span class="tooltiptext" id="erase-tooltip">清除選區</span>
+                </button>
+
+                <button id="reset-btn" class="tooltip" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                        <path d="M3 3v5h5"></path>
+                    </svg>
+                    <span class="tooltiptext" id="reset-tooltip">還原原圖</span>
+                </button>
+
+                <button id="undo-btn" class="tooltip" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 7v6h6"></path>
+                        <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path>
+                    </svg>
+                    <span class="tooltiptext" id="undo-tooltip">復原上一步</span>
+                </button>
+            </div>
+
+            <!-- 填充顏色選擇 -->
+            <div class="tool-group">
+                <div class="color-picker-container">
+                    <label for="fill-color" id="fill-color-label">填充顏色：</label>
+                    <input type="color" id="fill-color" value="#ffffff">
+                    <div id="fill-color-preview"></div>
+                    <button id="transparent-btn" class="tooltip">
+                        <span class="tooltiptext" id="transparent-tooltip">透明填充</span>
+                        透明
+                    </button>
+                </div>
+            </div>
+
+            <!-- 背景預覽 -->
+            <div class="tool-group">
                 <div class="preview-controls-inline">
                     <div class="preview-background">
                         <label for="background-color">背景顏色：</label>
@@ -155,14 +128,15 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 色彩容差设置（仅在使用拾色器时可见） -->
-        <div class="tolerance-slider" id="tolerance-container" style="display: none;">
-            <label for="tolerance-slider" id="tolerance-label">顏色容差:</label>
-            <div class="tolerance-slider-inner">
-                <input type="range" id="tolerance-slider" min="0" max="100" value="30">
-                <span class="tolerance-value" id="tolerance-value">30</span>
+            <!-- 設定 -->
+            <div class="tool-group">
+                <button id="settings-btn" aria-label="設置">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
             </div>
         </div>
 
@@ -170,15 +144,16 @@
             <canvas id="main-canvas"></canvas>
         </div>
 
+        <!-- 使用說明 -->
         <div class="instructions">
             <h3 id="instructions-title">使用說明：</h3>
             <ol>
-                <li id="instruction-1">點擊"上傳圖片"按鈕選擇需要處理的PNG圖片</li>
-                <li id="instruction-2">選擇"矩形選擇"工具框選文字區域，或使用"套索工具"自由繪製選區</li>
-                <li id="instruction-3">選擇填充顏色（默認透明）或使用拾色器選擇要移除的顏色</li>
-                <li id="instruction-4">點擊"清除選區"將選中區域內的文字清除（選區線條會自動消失）</li>
-                <li id="instruction-5">使用"撤銷操作"可以返回上一步</li>
-                <li id="instruction-6">如需完全恢復原始圖片，請點擊"恢復原圖"</li>
+                <li id="instruction-1">點擊"上傳圖片"按鈕選擇需要處理的圖片</li>
+                <li id="instruction-2">選擇"矩形選擇"或"套索工具"框選要移除的區域，或使用"拾色器"選擇要移除的顏色</li>
+                <li id="instruction-3">選擇填充顏色（預設透明）</li>
+                <li id="instruction-4">點擊"清除選區"移除選中區域的內容</li>
+                <li id="instruction-5">使用"復原上一步"可以返回上一步操作</li>
+                <li id="instruction-6">如需完全還原原始圖片，請點擊"還原原圖"</li>
                 <li id="instruction-7">處理完成後，點擊"下載圖片"保存結果</li>
             </ol>
         </div>

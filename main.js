@@ -51,46 +51,82 @@ const TOOLS = {
     COLOR_PICKER: 'color-picker'
 };
 
-// 事件监听
-uploadBtn.addEventListener('click', () => fileInput.click());
-fileInput.addEventListener('change', handleFileSelect);
-rectangleBtn.addEventListener('click', () => setTool(TOOLS.RECTANGLE));
-lassoBtn.addEventListener('click', () => setTool(TOOLS.LASSO));
-colorPickerBtn.addEventListener('click', () => setTool(TOOLS.COLOR_PICKER));
-eraseBtn.addEventListener('click', eraseSelection);
-resetBtn.addEventListener('click', resetImage);
-downloadBtn.addEventListener('click', downloadImage);
-undoBtn.addEventListener('click', undoLastOperation);
-settingsBtn.addEventListener('click', openSettingsModal);
-closeBtn.addEventListener('click', closeSettingsModal);
-saveSettingsBtn.addEventListener('click', saveUserSettings);
-transparentBtn.addEventListener('click', setTransparentFill);
-fillColorInput.addEventListener('input', updateFillColor);
-toleranceSlider.addEventListener('input', updateToleranceValue);
+// 初始化事件監聽器
+function initEventListeners() {
+    // 檢查並添加基本工具的事件監聽器
+    if (uploadBtn && fileInput) {
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileSelect);
+    }
 
-// 画布事件监听
-canvas.addEventListener('mousedown', startDrawing);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseleave', stopDrawing);
-canvas.addEventListener('click', handleCanvasClick);
+    // 檢查並添加選擇工具的事件監聽器
+    if (rectangleBtn) {
+        rectangleBtn.addEventListener('click', () => setTool(TOOLS.RECTANGLE));
+    }
+    if (lassoBtn) {
+        lassoBtn.addEventListener('click', () => setTool(TOOLS.LASSO));
+    }
+    if (colorPickerBtn) {
+        colorPickerBtn.addEventListener('click', () => setTool(TOOLS.COLOR_PICKER));
+    }
 
-// 触摸事件支持
-canvas.addEventListener('touchstart', handleTouchStart);
-canvas.addEventListener('touchmove', handleTouchMove);
-canvas.addEventListener('touchend', handleTouchEnd);
+    // 檢查並添加編輯操作的事件監聽器
+    if (eraseBtn) {
+        eraseBtn.addEventListener('click', eraseSelection);
+    }
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetImage);
+    }
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadImage);
+    }
+    if (undoBtn) {
+        undoBtn.addEventListener('click', undoLastOperation);
+    }
 
-// 语言选项事件
-languageOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        // 移除所有选项的活动状态
-        languageOptions.forEach(opt => opt.classList.remove('active'));
-        // 添加当前选项的活动状态
-        option.classList.add('active');
-        // 设置当前语言
-        setLanguage(option.dataset.lang);
-    });
-});
+    // 檢查並添加設置相關的事件監聽器
+    if (settingsBtn && closeBtn && saveSettingsBtn) {
+        settingsBtn.addEventListener('click', openSettingsModal);
+        closeBtn.addEventListener('click', closeSettingsModal);
+        saveSettingsBtn.addEventListener('click', saveUserSettings);
+    }
+
+    // 檢查並添加顏色相關的事件監聽器
+    if (transparentBtn && fillColorInput) {
+        transparentBtn.addEventListener('click', setTransparentFill);
+        fillColorInput.addEventListener('input', updateFillColor);
+    }
+
+    // 檢查並添加容差滑塊的事件監聽器
+    if (toleranceSlider) {
+        toleranceSlider.addEventListener('input', updateToleranceValue);
+    }
+
+    // 檢查並添加畫布事件監聽器
+    if (canvas) {
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+        canvas.addEventListener('click', handleCanvasClick);
+
+        // 觸摸事件支持
+        canvas.addEventListener('touchstart', handleTouchStart);
+        canvas.addEventListener('touchmove', handleTouchMove);
+        canvas.addEventListener('touchend', handleTouchEnd);
+    }
+
+    // 檢查並添加語言選項事件
+    if (languageOptions) {
+        languageOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                setLanguage(option.dataset.lang);
+            });
+        });
+    }
+}
 
 // 更新填充颜色
 function updateFillColor(e) {
@@ -697,6 +733,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // 应用翻译
     applyTranslation();
+
+    // 初始化事件監聽器
+    initEventListeners();
 
     // 设置矩形工具为默认
     setTool(TOOLS.RECTANGLE);
