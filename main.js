@@ -56,6 +56,12 @@ let fillColor = 'transparent'; // 默认透明填充
 let pickedColor = null;
 let colorTolerance = 30; // 默认颜色容差
 
+// 背景預覽相關變量
+let backgroundColor = '#ffffff';
+let backgroundPattern = 'none';
+const backgroundColorInput = document.getElementById('background-color');
+const backgroundPatternSelect = document.getElementById('background-pattern');
+
 // 工具模式常量
 const TOOLS = {
     RECTANGLE: 'rectangle',
@@ -831,6 +837,65 @@ function togglePreviewFullscreen() {
     }
 }
 
+// 初始化背景預覽控制
+function initBackgroundPreview() {
+    // 檢查必要的 DOM 元素
+    if (!backgroundColorInput || !backgroundPatternSelect || !canvasContainer) {
+        console.error('背景預覽相關 DOM 元素初始化失敗');
+        return;
+    }
+
+    // 從本地存儲加載設置
+    const savedSettings = JSON.parse(localStorage.getItem('backgroundSettings') || '{}');
+    backgroundColor = savedSettings.backgroundColor || '#ffffff';
+    backgroundPattern = savedSettings.pattern || 'none';
+
+    // 設置初始值
+    backgroundColorInput.value = backgroundColor;
+    backgroundPatternSelect.value = backgroundPattern;
+    updateBackgroundPreview();
+
+    // 添加事件監聽器
+    backgroundColorInput.addEventListener('change', (e) => {
+        backgroundColor = e.target.value;
+        updateBackgroundPreview();
+        saveBackgroundSettings();
+    });
+
+    backgroundPatternSelect.addEventListener('change', (e) => {
+        backgroundPattern = e.target.value;
+        updateBackgroundPreview();
+        saveBackgroundSettings();
+    });
+}
+
+// 更新背景預覽
+function updateBackgroundPreview() {
+    if (!canvasContainer) return;
+
+    // 移除所有背景圖案類
+    canvasContainer.classList.remove('checkerboard', 'grid');
+
+    // 設置背景顏色
+    canvasContainer.style.backgroundColor = backgroundColor;
+
+    // 設置背景圖案
+    if (backgroundPattern === 'checkerboard') {
+        canvasContainer.classList.add('checkerboard');
+    } else if (backgroundPattern === 'grid') {
+        canvasContainer.classList.add('grid');
+    }
+}
+
+// 保存背景設置
+function saveBackgroundSettings() {
+    const settings = {
+        backgroundColor: backgroundColor,
+        pattern: backgroundPattern
+    };
+    localStorage.setItem('backgroundSettings', JSON.stringify(settings));
+}
+
 // 初始设置
 window.addEventListener('DOMContentLoaded', () => {
     // 初始化 i18n
@@ -850,6 +915,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // 初始化預覽控制
     initPreview();
+
+    // 初始化背景預覽
+    initBackgroundPreview();
 });
 
 // 檢查必要的 DOM 元素是否存在

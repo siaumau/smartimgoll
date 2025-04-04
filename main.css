@@ -148,11 +148,21 @@ button:disabled {
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
     overflow: hidden;
-    background-color: #F3F4F6;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+#canvas-container.checkerboard {
     background-image: linear-gradient(45deg, #E5E7EB 25%, transparent 25%, transparent 75%, #E5E7EB 75%, #E5E7EB),
                       linear-gradient(45deg, #E5E7EB 25%, transparent 25%, transparent 75%, #E5E7EB 75%, #E5E7EB);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
+}
+
+#canvas-container.grid {
+    background-image: linear-gradient(#E5E7EB 1px, transparent 1px),
+                      linear-gradient(90deg, #E5E7EB 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
 canvas {
@@ -203,6 +213,7 @@ canvas {
     background-color: rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .modal-content {
@@ -210,10 +221,12 @@ canvas {
     border-radius: var(--radius);
     padding: 24px;
     width: 90%;
-    max-width: 500px;
+    max-width: 800px;
     max-height: 90vh;
     overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: var(--shadow);
+    position: relative;
 }
 
 .modal-header {
@@ -405,54 +418,72 @@ input[type="range"] {
 
 /* 預覽標籤樣式 */
 .preview-controls {
+    width: 100%;
+    padding: 8px 16px;
+    box-sizing: border-box;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 8px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e5e7eb;
+    margin: 0 -24px;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
-.preview-background, .preview-pattern {
+.preview-background,
+.preview-pattern,
+.preview-upload {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    min-width: auto;
 }
 
-.preview-background label, .preview-pattern label {
-    font-size: 0.85rem;
-    color: var(--secondary-color);
+.preview-background label,
+.preview-pattern label {
+    font-size: 0.9rem;
+    color: #666;
     white-space: nowrap;
 }
 
-#preview-background-color {
-    width: 30px;
-    height: 30px;
-    padding: 0;
+#preview-upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-#preview-pattern-select {
-    padding: 4px 8px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    background-color: white;
-    font-size: 0.85rem;
+#preview-upload-btn:hover {
+    background-color: var(--primary-hover);
 }
 
-#preview-container {
+#preview-upload-btn .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.preview-container {
     position: relative;
-    margin: 20px 0;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    border: 1px solid #ccc;
+    margin: 0;
     overflow: hidden;
-    background-color: #F3F4F6;
-}
-
-#preview-canvas {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
 }
 
 /* 棋盤格背景 */
@@ -473,20 +504,32 @@ input[type="range"] {
 /* 響應式調整 */
 @media (max-width: 768px) {
     .preview-controls {
-        flex-direction: column;
+        padding: 8px;
         gap: 12px;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: auto;
+        margin: 0 -24px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
-}
 
-/* 預覽容器樣式 */
-.preview-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-    border: 1px solid #ccc;
-    margin-top: 1rem;
-    overflow: hidden;
+    .preview-background,
+    .preview-pattern,
+    .preview-upload {
+        flex-shrink: 0;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .preview-controls {
+        margin: 0 -16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
 
 /* 棋盤格背景圖案 */
@@ -504,58 +547,6 @@ input[type="range"] {
     background-image: linear-gradient(#f0f0f0 1px, transparent 1px),
                       linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
     background-size: 20px 20px;
-}
-
-/* 預覽控制區域樣式 */
-.preview-controls {
-    display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
-    align-items: center;
-}
-
-.preview-background,
-.preview-pattern {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.preview-background label,
-.preview-pattern label {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-#preview-background-color {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#preview-pattern {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    font-size: 0.9rem;
-}
-
-/* 響應式調整 */
-@media (max-width: 768px) {
-    .preview-controls {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .preview-background,
-    .preview-pattern {
-        width: 100%;
-        justify-content: space-between;
-    }
 }
 
 /* 預覽彈窗樣式 */
@@ -582,52 +573,38 @@ input[type="range"] {
 }
 
 .preview-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
-#preview-upload-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
+/* 全螢幕模式樣式 */
+.preview-modal.fullscreen .modal-content {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.preview-modal.fullscreen .preview-container {
+    height: calc(100vh - 150px);
+    margin: 0;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
 }
 
-#preview-upload-btn:hover {
-    background-color: var(--primary-hover);
+.preview-modal.fullscreen #preview-canvas {
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
 }
 
-#preview-upload-btn .icon {
-    width: 20px;
-    height: 20px;
-}
-
-/* 響應式調整 */
-@media (max-width: 768px) {
-    #preview-modal .modal-content {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .preview-controls {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .preview-background,
-    .preview-pattern {
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
+/* 全螢幕按鈕切換圖標 */
+.preview-modal.fullscreen #preview-fullscreen-btn .icon {
+    transform: rotate(180deg);
 }
 
 .modal-header-controls {
@@ -659,34 +636,63 @@ input[type="range"] {
     height: 20px;
 }
 
-/* 全螢幕模式樣式 */
-.preview-modal.fullscreen {
-    padding: 0;
-}
-
-.preview-modal.fullscreen .modal-content {
-    width: 100%;
-    height: 100vh;
-    max-width: none;
-    margin: 0;
-    border-radius: 0;
-}
-
-.preview-modal.fullscreen .preview-container {
-    flex: 1;
+.preview-controls-inline {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 4px 0;
 }
 
-.preview-modal.fullscreen #preview-canvas {
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
+.preview-controls-inline .preview-background,
+.preview-controls-inline .preview-pattern {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* 全螢幕按鈕切換圖標 */
-.preview-modal.fullscreen #preview-fullscreen-btn .icon {
-    transform: rotate(180deg);
+.preview-controls-inline label {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    white-space: nowrap;
+}
+
+.preview-controls-inline input[type="color"] {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.preview-controls-inline select {
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background-color: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .preview-controls-inline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .preview-controls-inline .preview-background,
+    .preview-controls-inline .preview-pattern {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .preview-controls-inline select {
+        flex: 1;
+        margin-left: auto;
+    }
 }
