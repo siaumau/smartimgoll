@@ -1,6 +1,6 @@
 # SmartimG 圖片文字移除工具 (SmartimG Image Text Removal Tool)
 
-[繁體中文](#繁體中文) | [简体中文](#简体中文) | [English](#english) | [日本語](#日本語) | [한국어](#한국어)
+[繁體中文](#繁體中文) | [简体中文](#简体中文) | [English](#english) | [日本語](#日本語) | [한국어](#한국어) | [Français](#français) | [Deutsch](#deutsch) | [Español](#español) | [Bahasa Indonesia](#bahasa-indonesia)
 
 ## 繁體中文
 
@@ -227,7 +227,7 @@ SmartimG は、スマートでシンプルな画像処理ツールです。直�
 SmartimG는 스마트하고 간단한 이미지 처리 도구로, 사용자가 쉽게 이미지를 처리할 수 있도록 직관적인 인터페이스를 제공합니다.
 
 ### 기능 소개
-이미지에서 텍스트를 쉽게 제거할 수 있는 웹 도구입니다. 다양한 선택 도구와 색상 처리 옵션을 지원하여 이미지의 텍스트를 정확하게 제거할 수 있습니다。
+이미지에서 텍스트를 쉽게 제거할 수 있는 웹 도구입니다. 다양한 선택 도구와 색상 처리 옵션을 지원하여 이미지의 텍스트를 정확하게 제거할 수 있습니다.
 
 ### 주요 기능
 - 다양한 이미지 형식 지원
@@ -272,3 +272,99 @@ SmartimG는 스마트하고 간단한 이미지 처리 도구로, 사용자가 �
 - 반응형 디자인
 - 직관적인 사용자 인터페이스
 - 실시간 미리보기
+
+## Français
+
+### À propos de SmartimG
+SmartimG est un outil de traitement d'image intelligent et simple qui se concentre sur la fourniture d'une interface intuitive permettant aux utilisateurs de manipuler facilement le contenu des images.
+
+### Fonctionnalités
+Cet outil web convivial vous aide à supprimer rapidement le texte des images. Il prend en charge divers outils de sélection et options de traitement des couleurs, vous permettant de supprimer avec précision le contenu textuel des images.
+
+### Caractéristiques principales
+- Support de plusieurs formats d'image
+  - Prise en charge des formats PNG, JPG, JPEG, GIF
+  - Optimisation automatique de la taille des images
+  - Support du glisser-déposer
+
+- Outils de sélection multiples
+  - Sélection rectangulaire pour les zones de texte régulières
+  - Outil lasso pour les sélections de forme libre
+  - Ajustement et déplacement des sélections
+
+- Outil pipette de couleur
+  - Sélection précise des couleurs
+  - Tolérance de couleur ajustable
+  - Échantillonnage multiple des couleurs
+
+## Deutsch
+
+### Über SmartimG
+SmartimG ist ein intelligentes und einfaches Bildbearbeitungswerkzeug, das sich darauf konzentriert, eine intuitive Benutzeroberfläche bereitzustellen, mit der Benutzer Bildinhalte einfach bearbeiten können.
+
+### Funktionen
+Dieses benutzerfreundliche Webtool hilft Ihnen, Text schnell aus Bildern zu entfernen. Es unterstützt verschiedene Auswahlwerkzeuge und Farbverarbeitungsoptionen, mit denen Sie Textinhalte präzise aus Bildern entfernen können.
+
+### Hauptmerkmale
+- Unterstützung mehrerer Bildformate
+  - Unterstützung von PNG, JPG, JPEG, GIF
+  - Automatische Bildgrößenoptimierung
+  - Drag & Drop-Unterstützung
+
+- Mehrere Auswahlwerkzeuge
+  - Rechteckauswahl für regelmäßige Textbereiche
+  - Lasso-Werkzeug für Freihandauswahl
+  - Anpassung und Verschiebung von Auswahlbereichen
+
+- Farbpipette
+  - Präzise Farbauswahl
+  - Einstellbare Farbtoleranz
+  - Mehrfache Farbentnahme
+
+## Español
+
+### Acerca de SmartimG
+SmartimG es una herramienta de procesamiento de imágenes inteligente y sencilla que se centra en proporcionar una interfaz intuitiva para que los usuarios puedan manejar fácilmente el contenido de las imágenes.
+
+### Características
+Esta es una herramienta web fácil de usar que te ayuda a eliminar rápidamente texto de las imágenes. Admite varias herramientas de selección y opciones de procesamiento de color, permitiéndote eliminar con precisión el contenido de texto de las imágenes.
+
+### Características principales
+- Soporte para múltiples formatos de imagen
+  - Compatibilidad con PNG, JPG, JPEG, GIF
+  - Optimización automática del tamaño de imagen
+  - Soporte para arrastrar y soltar
+
+- Múltiples herramientas de selección
+  - Selección rectangular para áreas de texto regulares
+  - Herramienta lazo para selección libre
+  - Ajuste y movimiento de selecciones
+
+- Herramienta cuentagotas
+  - Selección precisa de colores
+  - Tolerancia de color ajustable
+  - Muestreo múltiple de colores
+
+## Bahasa Indonesia
+
+### Tentang SmartimG
+SmartimG adalah alat pengolah gambar yang cerdas dan sederhana yang berfokus pada penyediaan antarmuka yang intuitif agar pengguna dapat dengan mudah menangani konten gambar.
+
+### Fitur
+Ini adalah alat web yang mudah digunakan yang membantu Anda dengan cepat menghapus teks dari gambar. Mendukung berbagai alat seleksi dan opsi pemrosesan warna, memungkinkan Anda menghapus konten teks dari gambar dengan tepat.
+
+### Fitur Utama
+- Dukungan berbagai format gambar
+  - Mendukung format PNG, JPG, JPEG, GIF
+  - Optimasi ukuran gambar otomatis
+  - Dukungan drag & drop
+
+- Beragam alat seleksi
+  - Seleksi persegi untuk area teks reguler
+  - Alat laso untuk seleksi bebas
+  - Penyesuaian dan pemindahan seleksi
+
+- Alat pemilih warna
+  - Pemilihan warna yang presisi
+  - Toleransi warna yang dapat disesuaikan
+  - Pengambilan sampel warna berganda
