@@ -27,23 +27,11 @@ const toleranceContainer = document.getElementById('tolerance-container');
 const toleranceSlider = document.getElementById('tolerance-slider');
 const toleranceValue = document.getElementById('tolerance-value');
 
-// 預覽相關元素
-const previewBtn = document.getElementById('preview-btn');
-const previewModal = document.getElementById('preview-modal');
-const closePreviewBtn = document.getElementById('close-preview');
-const previewCanvas = document.getElementById('preview-canvas');
-const previewCtx = previewCanvas ? previewCanvas.getContext('2d') : null;
-const previewBackgroundColorInput = document.getElementById('preview-background-color');
-const previewPatternSelect = document.getElementById('preview-pattern');
-const previewUploadBtn = document.getElementById('preview-upload-btn');
-const previewFileInput = document.getElementById('preview-file-input');
-const previewFullscreenBtn = document.getElementById('preview-fullscreen-btn');
-
-// 預覽相關變數
-let previewImage = null;
-let previewBackgroundColor = '#ffffff';
-let previewPattern = 'none';
-let isPreviewFullscreen = false;
+// 背景預覽相關變量
+let backgroundColor = '#ffffff';
+let backgroundPattern = 'none';
+const backgroundColorInput = document.getElementById('background-color');
+const backgroundPatternSelect = document.getElementById('background-pattern');
 
 // 状态变量
 let originalImage = null;
@@ -55,12 +43,6 @@ let points = [];
 let fillColor = 'transparent'; // 默认透明填充
 let pickedColor = null;
 let colorTolerance = 30; // 默认颜色容差
-
-// 背景預覽相關變量
-let backgroundColor = '#ffffff';
-let backgroundPattern = 'none';
-const backgroundColorInput = document.getElementById('background-color');
-const backgroundPatternSelect = document.getElementById('background-pattern');
 
 // 工具模式常量
 const TOOLS = {
@@ -649,195 +631,7 @@ function saveUserSettings() {
     closeSettingsModal();
 }
 
-// 初始化預覽控制
-function initPreview() {
-    // 從本地存儲加載預覽設置
-    const savedPreviewSettings = JSON.parse(localStorage.getItem('previewSettings') || '{}');
-    previewBackgroundColor = savedPreviewSettings.backgroundColor || '#ffffff';
-    previewPattern = savedPreviewSettings.pattern || 'none';
-
-    // 設置控制元素的初始值
-    previewBackgroundColorInput.value = previewBackgroundColor;
-    previewPatternSelect.value = previewPattern;
-
-    // 添加事件監聽器
-    previewBtn.addEventListener('click', openPreviewModal);
-    closePreviewBtn.addEventListener('click', closePreviewModal);
-    previewUploadBtn.addEventListener('click', () => previewFileInput.click());
-    previewFileInput.addEventListener('change', handlePreviewFileSelect);
-    previewBackgroundColorInput.addEventListener('change', (e) => {
-        previewBackgroundColor = e.target.value;
-        updatePreview();
-        savePreviewSettings();
-    });
-    previewPatternSelect.addEventListener('change', (e) => {
-        previewPattern = e.target.value;
-        updatePreview();
-        savePreviewSettings();
-    });
-    previewFullscreenBtn.addEventListener('click', togglePreviewFullscreen);
-
-    // 點擊模態框外部關閉
-    window.addEventListener('click', (e) => {
-        if (e.target === previewModal) {
-            closePreviewModal();
-        }
-    });
-
-    // 監聽 ESC 鍵退出全螢幕
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isPreviewFullscreen) {
-            togglePreviewFullscreen();
-        }
-    });
-}
-
-// 打開預覽模態框
-function openPreviewModal() {
-    previewModal.style.display = 'flex';
-
-    // 如果已經有圖片，則更新預覽
-    if (previewImage) {
-        updatePreview();
-    }
-}
-
-// 關閉預覽模態框
-function closePreviewModal() {
-    previewModal.style.display = 'none';
-}
-
-// 處理預覽文件選擇
-function handlePreviewFileSelect(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const img = new Image();
-        img.onload = function() {
-            previewImage = img;
-            updatePreview();
-        };
-        img.src = event.target.result;
-    };
-    reader.readAsDataURL(file);
-}
-
-// 更新預覽
-function updatePreview() {
-    if (!previewImage) return;
-
-    // 設置畫布大小
-    let containerWidth, containerHeight;
-
-    if (isPreviewFullscreen) {
-        // 全螢幕模式下使用視窗大小
-        containerWidth = window.innerWidth;
-        containerHeight = window.innerHeight - 200; // 減去頭部和控制項的高度
-    } else {
-        // 一般模式下使用容器大小
-        containerWidth = previewCanvas.parentElement.clientWidth;
-        containerHeight = previewCanvas.parentElement.clientHeight;
-    }
-
-    // 計算適合的尺寸，保持寬高比
-    let width = previewImage.width;
-    let height = previewImage.height;
-
-    // 計算縮放比例
-    const scaleX = containerWidth / width;
-    const scaleY = containerHeight / height;
-    const scale = Math.min(scaleX, scaleY);
-
-    // 應用縮放
-    width *= scale;
-    height *= scale;
-
-    previewCanvas.width = width;
-    previewCanvas.height = height;
-
-    // 清除畫布
-    previewCtx.clearRect(0, 0, width, height);
-
-    // 設置背景顏色
-    previewCtx.fillStyle = previewBackgroundColor;
-    previewCtx.fillRect(0, 0, width, height);
-
-    // 設置背景圖案
-    if (previewPattern === 'checkerboard') {
-        drawCheckerboardPattern();
-    } else if (previewPattern === 'grid') {
-        drawGridPattern();
-    }
-
-    // 繪製圖片
-    previewCtx.drawImage(previewImage, 0, 0, width, height);
-}
-
-// 繪製棋盤格圖案
-function drawCheckerboardPattern() {
-    const size = 20;
-    const width = previewCanvas.width;
-    const height = previewCanvas.height;
-
-    previewCtx.fillStyle = '#f0f0f0';
-
-    for (let y = 0; y < height; y += size * 2) {
-        for (let x = 0; x < width; x += size * 2) {
-            previewCtx.fillRect(x, y, size, size);
-            previewCtx.fillRect(x + size, y + size, size, size);
-        }
-    }
-}
-
-// 繪製網格圖案
-function drawGridPattern() {
-    const size = 20;
-    const width = previewCanvas.width;
-    const height = previewCanvas.height;
-
-    previewCtx.strokeStyle = '#f0f0f0';
-    previewCtx.lineWidth = 1;
-
-    // 繪製垂直線
-    for (let x = 0; x <= width; x += size) {
-        previewCtx.beginPath();
-        previewCtx.moveTo(x, 0);
-        previewCtx.lineTo(x, height);
-        previewCtx.stroke();
-    }
-
-    // 繪製水平線
-    for (let y = 0; y <= height; y += size) {
-        previewCtx.beginPath();
-        previewCtx.moveTo(0, y);
-        previewCtx.lineTo(width, y);
-        previewCtx.stroke();
-    }
-}
-
-// 保存預覽設置
-function savePreviewSettings() {
-    const settings = {
-        backgroundColor: previewBackgroundColor,
-        pattern: previewPattern
-    };
-    localStorage.setItem('previewSettings', JSON.stringify(settings));
-}
-
-// 切換全螢幕預覽
-function togglePreviewFullscreen() {
-    isPreviewFullscreen = !isPreviewFullscreen;
-    previewModal.classList.toggle('fullscreen', isPreviewFullscreen);
-
-    // 更新預覽畫布大小
-    if (previewImage) {
-        updatePreview();
-    }
-}
-
-// 初始化背景預覽控制
+// 初始化背景預覽
 function initBackgroundPreview() {
     // 檢查必要的 DOM 元素
     if (!backgroundColorInput || !backgroundPatternSelect || !canvasContainer) {
@@ -913,19 +707,6 @@ window.addEventListener('DOMContentLoaded', () => {
     // 设置默认填充颜色为透明
     setTransparentFill();
 
-    // 初始化預覽控制
-    initPreview();
-
     // 初始化背景預覽
     initBackgroundPreview();
 });
-
-// 檢查必要的 DOM 元素是否存在
-if (!previewCanvas || !previewCtx) {
-    console.error('預覽畫布初始化失敗');
-}
-
-if (!previewBtn || !previewModal || !closePreviewBtn || !previewBackgroundColorInput ||
-    !previewPatternSelect || !previewUploadBtn || !previewFileInput || !previewFullscreenBtn) {
-    console.error('預覽相關 DOM 元素初始化失敗');
-}

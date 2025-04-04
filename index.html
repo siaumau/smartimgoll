@@ -20,13 +20,6 @@
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                     </svg>
                 </button>
-                <button id="preview-btn" aria-label="預覽" class="tooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    <span class="tooltiptext" id="preview-tooltip">預覽背景移除效果</span>
-                </button>
             </div>
         </div>
 
@@ -229,55 +222,6 @@
                 </div>
             </div>
             <button class="primary" id="save-settings-btn">保存設置</button>
-        </div>
-    </div>
-
-    <!-- 預覽模態框 -->
-    <div id="preview-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="preview-title">預覽背景移除效果</h2>
-                <div class="modal-header-controls">
-                    <button id="preview-fullscreen-btn" class="icon-btn tooltip" aria-label="全螢幕">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
-                            <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
-                            <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
-                            <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
-                        </svg>
-                        <span class="tooltiptext" id="fullscreen-tooltip">全螢幕預覽</span>
-                    </button>
-                    <span id="close-preview" class="close">&times;</span>
-                </div>
-            </div>
-            <div class="preview-controls">
-                <div class="preview-upload">
-                    <button id="preview-upload-btn" class="tooltip">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        上傳圖片
-                    </button>
-                    <input type="file" id="preview-file-input" accept="image/*" style="display: none;">
-                </div>
-                <div class="preview-background">
-                    <label for="preview-background-color">背景顏色：</label>
-                    <input type="color" id="preview-background-color" value="#ffffff">
-                </div>
-                <div class="preview-pattern">
-                    <label for="preview-pattern">背景圖案：</label>
-                    <select id="preview-pattern">
-                        <option value="none">無</option>
-                        <option value="checkerboard">棋盤格</option>
-                        <option value="grid">網格</option>
-                    </select>
-                </div>
-            </div>
-            <div class="preview-container">
-                <canvas id="preview-canvas"></canvas>
-            </div>
         </div>
     </div>
 
