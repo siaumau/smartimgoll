@@ -41,7 +41,7 @@ function applyTranslation() {
         }
     }
 
-    // 更新文檔標題
+    // 更新文檔標題和頁面標題
     document.title = langData['app-title'] || 'SmartimG';
 }
 
