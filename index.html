@@ -115,11 +115,11 @@
             <div class="tool-group">
                 <div class="preview-controls-inline">
                     <div class="preview-background">
-                        <label for="background-color">背景顏色：</label>
+                        <label for="background-color">背景：</label>
                         <input type="color" id="background-color" value="#ffffff">
                     </div>
                     <div class="preview-pattern">
-                        <label for="background-pattern">背景圖案：</label>
+                        <label for="background-pattern">圖案：</label>
                         <select id="background-pattern">
                             <option value="none">無</option>
                             <option value="checkerboard">棋盤格</option>
@@ -129,13 +129,14 @@
                 </div>
             </div>
 
-            <!-- 設定 -->
-            <div class="tool-group">
-                <button id="settings-btn" aria-label="設置">
+            <!-- 設定按鈕 -->
+            <div class="tool-group settings-group">
+                <button id="settings-btn" class="tooltip" aria-label="設置">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                     </svg>
+                    <span class="tooltiptext" id="settings-tooltip">設置</span>
                 </button>
             </div>
         </div>

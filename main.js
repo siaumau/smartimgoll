@@ -683,20 +683,20 @@ function initBackgroundPreview() {
     // 設置初始值
     backgroundColorInput.value = backgroundColor;
     backgroundPatternSelect.value = backgroundPattern;
-    updateBackgroundPreview();
 
     // 添加事件監聽器
-    backgroundColorInput.addEventListener('change', (e) => {
+    backgroundColorInput.addEventListener('input', (e) => {
         backgroundColor = e.target.value;
         updateBackgroundPreview();
-        saveBackgroundSettings();
     });
 
     backgroundPatternSelect.addEventListener('change', (e) => {
         backgroundPattern = e.target.value;
         updateBackgroundPreview();
-        saveBackgroundSettings();
     });
+
+    // 初始更新背景
+    updateBackgroundPreview();
 }
 
 // 更新背景預覽
@@ -712,9 +712,19 @@ function updateBackgroundPreview() {
     // 設置背景圖案
     if (backgroundPattern === 'checkerboard') {
         canvasContainer.classList.add('checkerboard');
+        // 確保背景顏色不會覆蓋圖案
+        canvasContainer.style.backgroundBlendMode = 'difference';
     } else if (backgroundPattern === 'grid') {
         canvasContainer.classList.add('grid');
+        // 確保背景顏色不會覆蓋圖案
+        canvasContainer.style.backgroundBlendMode = 'difference';
+    } else {
+        // 重置背景混合模式
+        canvasContainer.style.backgroundBlendMode = 'normal';
     }
+
+    // 保存設置
+    saveBackgroundSettings();
 }
 
 // 保存背景設置
