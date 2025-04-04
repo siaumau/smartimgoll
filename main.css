@@ -543,71 +543,113 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .settings-group {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    border-right: none !important;
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.settings-group button {
-    display: inline-flex;
+.settings-group:last-child {
+    border-bottom: none;
+}
+
+.settings-group h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 16px 0;
+}
+
+/* 語言選項樣式優化 */
+.language-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.language-option {
+    padding: 12px 16px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.language-option:hover {
+    background: var(--card-bg);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.language-option.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 界面設置選項樣式 */
+.settings-option {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    padding: 8px;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.settings-option label {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.settings-option select {
+    padding: 8px 12px;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     background: var(--card-bg);
+    font-size: 14px;
     color: var(--text-color);
+    cursor: pointer;
+    min-width: 120px;
+}
+
+/* 保存按鈕樣式 */
+#save-settings-btn {
+    margin-top: 24px;
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.settings-group button:hover {
-    background: var(--bg-color);
-    border-color: var(--secondary-color);
+#save-settings-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
 }
 
-.settings-group .icon {
-    width: 18px;
-    height: 18px;
-    stroke-width: 2;
-}
-
-/* 調整工具列內的預覽控制項 */
-.preview-controls-inline {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 4px 0;
-}
-
-.preview-background,
-.preview-pattern {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.preview-background label,
-.preview-pattern label {
-    font-size: 14px;
-    color: var(--secondary-color);
-    white-space: nowrap;
-    min-width: 42px;
-}
-
+/* 響應式調整 */
 @media (max-width: 768px) {
-    .settings-group {
-        width: auto;
-        padding: 8px;
-        border-bottom: none;
-        justify-content: flex-start;
+    .language-options {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
 
-    .tool-group {
-        justify-content: flex-start;
+    .settings-option {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .settings-option select {
+        width: 100%;
     }
 }
 
