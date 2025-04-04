@@ -33,9 +33,16 @@ function applyTranslation() {
     for (const [id, text] of Object.entries(langData)) {
         const element = document.getElementById(id);
         if (element) {
-            element.textContent = text;
+            if (element.tagName.toLowerCase() === 'option') {
+                element.text = text;
+            } else {
+                element.textContent = text;
+            }
         }
     }
+
+    // 更新文檔標題
+    document.title = langData['app-title'] || 'SmartimG';
 }
 
 // 應用工具提示可見性

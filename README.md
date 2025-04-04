@@ -1,8 +1,11 @@
-# 圖片文字移除工具 (Image Text Removal Tool)
+# SmartimG 圖片文字移除工具 (SmartimG Image Text Removal Tool)
 
 [繁體中文](#繁體中文) | [简体中文](#简体中文) | [English](#english) | [日本語](#日本語) | [한국어](#한국어)
 
 ## 繁體中文
+
+### 關於 SmartimG
+SmartimG 是一個聰明且簡單的圖片處理工具，專注於提供直覺的操作介面，讓使用者能夠輕鬆地處理圖片內容。
 
 ### 功能介紹
 這是一個簡單易用的網頁工具，可以幫助您快速移除圖片中的文字。支援多種選擇工具和顏色處理選項，讓您能夠精確地移除圖片中的文字內容。
@@ -55,6 +58,9 @@
 
 ## 简体中文
 
+### 关于 SmartimG
+SmartimG 是一个智能且简单的图片处理工具，专注于提供直观的操作界面，让用户能够轻松地处理图片内容。
+
 ### 功能介绍
 这是一个简单易用的网页工具，可以帮助您快速移除图片中的文字。支持多种选择工具和颜色处理选项，让您能够精确地移除图片中的文字内容。
 
@@ -105,6 +111,12 @@
 ---
 
 ## English
+
+### About SmartimG
+SmartimG is a smart and simple image processing tool that focuses on providing an intuitive interface for users to easily handle image content.
+
+### Features
+This is a user-friendly web tool that helps you quickly remove text from images. It supports various selection tools and color processing options, allowing you to precisely remove text content from images.
 
 ### Introduction
 A user-friendly web tool for removing text from images. It offers various selection tools and color processing options for precise text removal.
@@ -157,6 +169,9 @@ A user-friendly web tool for removing text from images. It offers various select
 
 ## 日本語
 
+### SmartimG について
+SmartimG は、スマートでシンプルな画像処理ツールです。直感的なインターフェースを提供し、ユーザーが簡単に画像を処理できることを重視しています。
+
 ### 機能紹介
 画像からテキストを簡単に削除できるウェブツールです。複数の選択ツールとカラー処理オプションを提供し、画像内のテキストを正確に削除できます。
 
@@ -208,8 +223,11 @@ A user-friendly web tool for removing text from images. It offers various select
 
 ## 한국어
 
+### SmartimG 소개
+SmartimG는 스마트하고 간단한 이미지 처리 도구로, 사용자가 쉽게 이미지를 처리할 수 있도록 직관적인 인터페이스를 제공합니다.
+
 ### 기능 소개
-이미지에서 텍스트를 쉽게 제거할 수 있는 웹 도구입니다. 다양한 선택 도구와 색상 처리 옵션을 제공하여 이미지 내의 텍스트를 정확하게 제거할 수 있습니다.
+이미지에서 텍스트를 쉽게 제거할 수 있는 웹 도구입니다. 다양한 선택 도구와 색상 처리 옵션을 지원하여 이미지의 텍스트를 정확하게 제거할 수 있습니다。
 
 ### 주요 기능
 - 다양한 이미지 형식 지원

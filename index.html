@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圖片文字移除工具</title>
+    <title>SmartimG 圖片文字移除工具</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>圖片文字移除工具</h1>
+            <h1>SmartimG 圖片文字移除工具</h1>
         </header>
 
         <div class="toolbar">
@@ -101,12 +101,12 @@
             <!-- 填充顏色選擇 -->
             <div class="tool-group">
                 <div class="color-picker-container">
-                    <label for="fill-color" id="fill-color-label">填充顏色：</label>
+                    <label for="fill-color" id="fill-color-label">Fill Color:</label>
                     <input type="color" id="fill-color" value="#ffffff">
                     <div id="fill-color-preview"></div>
                     <button id="transparent-btn" class="tooltip">
-                        <span class="tooltiptext" id="transparent-tooltip">透明填充</span>
-                        透明
+                        <span class="tooltiptext" id="transparent-tooltip">Use transparent fill</span>
+                        <span id="transparent-btn-text">Transparent</span>
                     </button>
                 </div>
             </div>
@@ -115,15 +115,15 @@
             <div class="tool-group">
                 <div class="preview-controls-inline">
                     <div class="preview-background">
-                        <label for="background-color">背景：</label>
+                        <label for="background-color" id="preview-background-label">BG:</label>
                         <input type="color" id="background-color" value="#ffffff">
                     </div>
                     <div class="preview-pattern">
-                        <label for="background-pattern">圖案：</label>
+                        <label for="background-pattern" id="preview-pattern-label">Pattern:</label>
                         <select id="background-pattern">
-                            <option value="none">無</option>
-                            <option value="checkerboard">棋盤格</option>
-                            <option value="grid">網格</option>
+                            <option value="none" id="preview-pattern-none">None</option>
+                            <option value="checkerboard" id="preview-pattern-checkerboard">Checkerboard</option>
+                            <option value="grid" id="preview-pattern-grid">Grid</option>
                         </select>
                     </div>
                 </div>

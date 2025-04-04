@@ -1,7 +1,7 @@
 // 多語言翻譯資料
 const translations = {
     'zh-TW': {
-        'app-title': '圖片文字移除工具',
+        'app-title': 'SmartimG 圖片文字移除工具',
         'file-tools-title': '檔案操作',
         'upload-btn-text': '上傳圖片',
         'upload-tooltip': '選擇要處理的圖片',
@@ -17,7 +17,7 @@ const translations = {
         'erase-tooltip': '移除選中區域的內容',
         'undo-btn-text': '撤銷操作',
         'undo-tooltip': '返回上一步操作',
-        'fill-color-label': '填充顏色:',
+        'fill-color-label': '填充顏色：',
         'transparent-btn-text': '透明',
         'transparent-tooltip': '使用透明填充',
         'output-tools-title': '輸出選項',
@@ -52,7 +52,7 @@ const translations = {
         'preview-upload-text': '上傳圖片'
     },
     'zh-CN': {
-        'app-title': '图片文字移除工具',
+        'app-title': 'SmartimG 图片文字移除工具',
         'file-tools-title': '文件操作',
         'upload-btn-text': '上传图片',
         'upload-tooltip': '选择要处理的图片',
@@ -103,7 +103,7 @@ const translations = {
         'preview-upload-text': '上传图片'
     },
     'en': {
-        'app-title': 'Image Text Removal Tool',
+        'app-title': 'SmartimG Image Text Removal Tool',
         'file-tools-title': 'File Operations',
         'upload-btn-text': 'Upload Image',
         'upload-tooltip': 'Select an image to process',
@@ -154,7 +154,7 @@ const translations = {
         'preview-upload-text': 'Upload Image'
     },
     'ja': {
-        'app-title': '画像テキスト削除ツール',
+        'app-title': 'SmartimG 画像テキスト削除ツール',
         'file-tools-title': 'ファイル操作',
         'upload-btn-text': '画像をアップロード',
         'upload-tooltip': '処理する画像を選択',
@@ -205,7 +205,7 @@ const translations = {
         'preview-upload-text': '画像をアップロード'
     },
     'ko': {
-        'app-title': '이미지 텍스트 제거 도구',
+        'app-title': 'SmartimG 이미지 텍스트 제거 도구',
         'file-tools-title': '파일 작업',
         'upload-btn-text': '이미지 업로드',
         'upload-tooltip': '처리할 이미지 선택',
