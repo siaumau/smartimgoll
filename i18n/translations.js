@@ -40,7 +40,16 @@ const translations = {
         'tooltip-label': '顯示按鈕提示',
         'tooltip-show': '顯示',
         'tooltip-hide': '隱藏',
-        'save-settings-btn': '保存設置'
+        'save-settings-btn': '保存設置',
+        'preview-tools-title': '預覽選項',
+        'preview-background-label': '背景顏色:',
+        'preview-pattern-label': '背景圖案:',
+        'preview-pattern-none': '無',
+        'preview-pattern-checkerboard': '棋盤格',
+        'preview-pattern-grid': '網格',
+        'preview-tooltip': '預覽背景移除效果',
+        'preview-title': '預覽背景移除效果',
+        'preview-upload-text': '上傳圖片'
     },
     'zh-CN': {
         'app-title': '图片文字移除工具',
@@ -82,7 +91,16 @@ const translations = {
         'tooltip-label': '显示按钮提示',
         'tooltip-show': '显示',
         'tooltip-hide': '隐藏',
-        'save-settings-btn': '保存设置'
+        'save-settings-btn': '保存设置',
+        'preview-tools-title': '预览选项',
+        'preview-background-label': '背景颜色:',
+        'preview-pattern-label': '背景图案:',
+        'preview-pattern-none': '无',
+        'preview-pattern-checkerboard': '棋盘格',
+        'preview-pattern-grid': '网格',
+        'preview-tooltip': '预览背景移除效果',
+        'preview-title': '预览背景移除效果',
+        'preview-upload-text': '上传图片'
     },
     'en': {
         'app-title': 'Image Text Removal Tool',
@@ -124,7 +142,16 @@ const translations = {
         'tooltip-label': 'Show Button Tips',
         'tooltip-show': 'Show',
         'tooltip-hide': 'Hide',
-        'save-settings-btn': 'Save Settings'
+        'save-settings-btn': 'Save Settings',
+        'preview-tools-title': 'Preview Options',
+        'preview-background-label': 'Background Color:',
+        'preview-pattern-label': 'Background Pattern:',
+        'preview-pattern-none': 'None',
+        'preview-pattern-checkerboard': 'Checkerboard',
+        'preview-pattern-grid': 'Grid',
+        'preview-tooltip': 'Preview Background Removal Effect',
+        'preview-title': 'Preview Background Removal Effect',
+        'preview-upload-text': 'Upload Image'
     },
     'ja': {
         'app-title': '画像テキスト削除ツール',
@@ -166,7 +193,16 @@ const translations = {
         'tooltip-label': 'ボタンのヒントを表示',
         'tooltip-show': '表示',
         'tooltip-hide': '非表示',
-        'save-settings-btn': '設定を保存'
+        'save-settings-btn': '設定を保存',
+        'preview-tools-title': 'プレビューオプション',
+        'preview-background-label': '背景色:',
+        'preview-pattern-label': '背景パターン:',
+        'preview-pattern-none': 'なし',
+        'preview-pattern-checkerboard': 'チェッカーボード',
+        'preview-pattern-grid': 'グリッド',
+        'preview-tooltip': '背景除去効果をプレビュー',
+        'preview-title': '背景除去効果のプレビュー',
+        'preview-upload-text': '画像をアップロード'
     },
     'ko': {
         'app-title': '이미지 텍스트 제거 도구',
@@ -208,7 +244,16 @@ const translations = {
         'tooltip-label': '버튼 팁 표시',
         'tooltip-show': '표시',
         'tooltip-hide': '숨기기',
-        'save-settings-btn': '설정 저장'
+        'save-settings-btn': '설정 저장',
+        'preview-tools-title': '미리보기 옵션',
+        'preview-background-label': '배경 색상:',
+        'preview-pattern-label': '배경 패턴:',
+        'preview-pattern-none': '없음',
+        'preview-pattern-checkerboard': '체커보드',
+        'preview-pattern-grid': '그리드',
+        'preview-tooltip': '배경 제거 효과 미리보기',
+        'preview-title': '배경 제거 효과 미리보기',
+        'preview-upload-text': '이미지 업로드'
     }
 };
 
