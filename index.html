@@ -198,7 +198,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="preview-title">預覽背景移除效果</h2>
-                <span id="close-preview" class="close">&times;</span>
+                <div class="modal-header-controls">
+                    <button id="preview-fullscreen-btn" class="icon-btn tooltip" aria-label="全螢幕">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                            <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
+                            <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
+                            <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                        </svg>
+                        <span class="tooltiptext" id="fullscreen-tooltip">全螢幕預覽</span>
+                    </button>
+                    <span id="close-preview" class="close">&times;</span>
+                </div>
             </div>
             <div class="preview-controls">
                 <div class="preview-background">

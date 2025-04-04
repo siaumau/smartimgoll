@@ -32,16 +32,18 @@ const previewBtn = document.getElementById('preview-btn');
 const previewModal = document.getElementById('preview-modal');
 const closePreviewBtn = document.getElementById('close-preview');
 const previewCanvas = document.getElementById('preview-canvas');
-const previewCtx = previewCanvas.getContext('2d');
-const previewUploadBtn = document.getElementById('preview-upload-btn');
-const previewFileInput = document.getElementById('preview-file-input');
+const previewCtx = previewCanvas ? previewCanvas.getContext('2d') : null;
 const previewBackgroundColorInput = document.getElementById('preview-background-color');
 const previewPatternSelect = document.getElementById('preview-pattern');
+const previewUploadBtn = document.getElementById('preview-upload-btn');
+const previewFileInput = document.getElementById('preview-file-input');
+const previewFullscreenBtn = document.getElementById('preview-fullscreen-btn');
 
 // 預覽相關變數
 let previewImage = null;
 let previewBackgroundColor = '#ffffff';
 let previewPattern = 'none';
+let isPreviewFullscreen = false;
 
 // 状态变量
 let originalImage = null;
@@ -667,11 +669,19 @@ function initPreview() {
         updatePreview();
         savePreviewSettings();
     });
+    previewFullscreenBtn.addEventListener('click', togglePreviewFullscreen);
 
     // 點擊模態框外部關閉
     window.addEventListener('click', (e) => {
         if (e.target === previewModal) {
             closePreviewModal();
+        }
+    });
+
+    // 監聽 ESC 鍵退出全螢幕
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isPreviewFullscreen) {
+            togglePreviewFullscreen();
         }
     });
 }
@@ -713,24 +723,30 @@ function updatePreview() {
     if (!previewImage) return;
 
     // 設置畫布大小
-    const containerWidth = previewCanvas.parentElement.clientWidth;
-    const containerHeight = previewCanvas.parentElement.clientHeight;
+    let containerWidth, containerHeight;
+
+    if (isPreviewFullscreen) {
+        // 全螢幕模式下使用視窗大小
+        containerWidth = window.innerWidth;
+        containerHeight = window.innerHeight - 200; // 減去頭部和控制項的高度
+    } else {
+        // 一般模式下使用容器大小
+        containerWidth = previewCanvas.parentElement.clientWidth;
+        containerHeight = previewCanvas.parentElement.clientHeight;
+    }
 
     // 計算適合的尺寸，保持寬高比
     let width = previewImage.width;
     let height = previewImage.height;
 
-    if (width > containerWidth) {
-        const ratio = containerWidth / width;
-        width = containerWidth;
-        height = height * ratio;
-    }
+    // 計算縮放比例
+    const scaleX = containerWidth / width;
+    const scaleY = containerHeight / height;
+    const scale = Math.min(scaleX, scaleY);
 
-    if (height > containerHeight) {
-        const ratio = containerHeight / height;
-        height = containerHeight;
-        width = width * ratio;
-    }
+    // 應用縮放
+    width *= scale;
+    height *= scale;
 
     previewCanvas.width = width;
     previewCanvas.height = height;
@@ -804,6 +820,17 @@ function savePreviewSettings() {
     localStorage.setItem('previewSettings', JSON.stringify(settings));
 }
 
+// 切換全螢幕預覽
+function togglePreviewFullscreen() {
+    isPreviewFullscreen = !isPreviewFullscreen;
+    previewModal.classList.toggle('fullscreen', isPreviewFullscreen);
+
+    // 更新預覽畫布大小
+    if (previewImage) {
+        updatePreview();
+    }
+}
+
 // 初始设置
 window.addEventListener('DOMContentLoaded', () => {
     // 初始化 i18n
@@ -831,6 +858,6 @@ if (!previewCanvas || !previewCtx) {
 }
 
 if (!previewBtn || !previewModal || !closePreviewBtn || !previewBackgroundColorInput ||
-    !previewPatternSelect || !previewUploadBtn || !previewFileInput) {
+    !previewPatternSelect || !previewUploadBtn || !previewFileInput || !previewFullscreenBtn) {
     console.error('預覽相關 DOM 元素初始化失敗');
 }
